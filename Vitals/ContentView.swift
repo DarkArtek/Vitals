@@ -44,9 +44,6 @@ struct CustomTabView : View {
                 
                 Email()
                     .tag("envelope.fill")
-                
-                Settings()
-                    .tag("gear")
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .ignoresSafeArea(.all, edges: .bottom)
@@ -80,7 +77,7 @@ struct CustomTabView : View {
 
 // tabs...
 // Image Names...
-var tabs = ["house","envelope.fill","gear"]
+var tabs = ["house","envelope.fill"]
 
 struct TabButton : View {
     
@@ -101,10 +98,10 @@ struct TabButton : View {
 
 struct Home : View {
     
-//    @State var txt = ""
+    //    @State var txt = ""
     @State var edge = UIApplication.shared.windows.first?.safeAreaInsets
     @State var isProfile = false
-
+    
     var body: some View{
         
         VStack{
@@ -114,7 +111,7 @@ struct Home : View {
                 VStack(alignment: .leading, spacing: 10) {
                     
                     TextShimmer(text:  "Hello Linus")
-                
+                    
                     Text("Welcome to vitals!")
                         .font(.title3)
                         .fontWeight(.bold)
@@ -140,10 +137,9 @@ struct Home : View {
                                             ProfileView(isOpened: $isProfile)
                                             
                                         })
-                    )
-                        
-
-
+                        )
+                    
+                    
                 }
             }
             .padding()
@@ -163,10 +159,38 @@ struct Home : View {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2),spacing: 20){
                         
                         ForEach(actions){action in
-                            
-                            NavigationLink(destination: DetailView(action: action)) {
+                            Group{
                                 
-                                ActivityCardView(action: action)
+                                if (action.name == "Talk to specialist"){
+                                    NavigationLink(destination: ChatView()) {
+                                        
+                                        ActivityCardView(action: action)
+                                    }
+                                }
+                                else if action.name == "Book an appointment"{
+                                    NavigationLink(destination: BookView()) {
+                                        
+                                        ActivityCardView(action: action)
+                                    }
+                                    
+                                    
+                                }else if action.name == "Order medicine"{
+                                    NavigationLink(destination: OrderMedicine()) {
+                                        
+                                        ActivityCardView(action: action)
+                                    }
+                                }
+                                else if action.name == "Talk to EDITH"{
+                                    NavigationLink(destination: EdithView()) {
+                                        
+                                        ActivityCardView(action: action)
+                                    }
+                                }else if action.name = "Quick Diagnostics"{
+                                    NavigationLink(destination: QuckDiagnostics()) {
+                                        
+                                        ActivityCardView(action: action)
+                                    }
+                                }
                             }
                         }
                     }
@@ -226,23 +250,26 @@ struct Email : View {
     var body: some View{
         
         VStack{
+            HStack{
+                Text("Your un-read messages")
+                    .foregroundColor(Color("Color1"))
+                    .font(.title)
+                    .fontWeight(.heavy)
+                
+                Spacer(minLength: 0)
+            }
+            .padding()
+            Spacer(minLength: 0)
             
-            Text("Email")
+            
+            Text("You're all caught up")
+            Spacer(minLength: 0)
+            
         }
     }
 }
 
 
-struct Settings : View {
-    
-    var body: some View{
-        
-        VStack{
-            
-            Text("Settings")
-        }
-    }
-}
 
 // Model Data...
 
@@ -257,10 +284,8 @@ struct QuickActions : Identifiable {
 // both image and color name is same so i used common word asset...
 
 var actions = [
-
     QuickActions(name: "Quick Diagnostics", numCourse: 12,asset: "Diagnostics"),
     QuickActions(name: "Talk to specialist", numCourse: 12,asset: "specialist"),
-    QuickActions(name: "Past Vitals", numCourse: 12,asset: "vitals"),
     QuickActions(name: "Book an appointment", numCourse: 12,asset: "appointment"),
     QuickActions(name: "Order medicine", numCourse: 12,asset: "medicine"),
     QuickActions(name: "Talk to EDITH", numCourse: 12,asset: "edith")
