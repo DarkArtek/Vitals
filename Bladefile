@@ -1,0 +1,9 @@
+#
+# Uncomment below to specify your own resources.
+# See https://github.com/jondot/blade for more information.
+#
+
+blades:
+  - source: icon.png
+    mount: Vitals/Assets.xcassets/AppIcon.appiconset
+    contents: true  # use 'false' if you want to only update existing catalog, 'true' if you want to generate a full catalog every time

@@ -16,6 +16,14 @@
 		C22E619425CE27FA00F9E8C9 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E619325CE27FA00F9E8C9 /* Profile.swift */; };
 		C22E619B25CE2F8D00F9E8C9 /* IntroductionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E619A25CE2F8D00F9E8C9 /* IntroductionView.swift */; };
 		C22E61A225CE2FA000F9E8C9 /* WelcomeSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22E61A125CE2FA000F9E8C9 /* WelcomeSubViews.swift */; };
+		C27106F325CEFBA7002966AA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27106F225CEFBA7002966AA /* Chat.swift */; };
+		C27106F725CEFC06002966AA /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27106F625CEFC06002966AA /* ChatBubble.swift */; };
+		C27106F825CEFC06002966AA /* ChatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27106F525CEFC06002966AA /* ChatRow.swift */; };
+		C27106FB25CF0624002966AA /* BookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27106FA25CF0624002966AA /* BookView.swift */; };
+		C271070025CF0B0C002966AA /* EdithView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27106FF25CF0B0C002966AA /* EdithView.swift */; };
+		C271070325CF0F20002966AA /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070225CF0F20002966AA /* PulseView.swift */; };
+		C271070625CF1613002966AA /* OrderMedicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070525CF1613002966AA /* OrderMedicine.swift */; };
+		C271070925CF1C17002966AA /* QuckDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070825CF1C17002966AA /* QuckDiagnostics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,14 @@
 		C22E619325CE27FA00F9E8C9 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		C22E619A25CE2F8D00F9E8C9 /* IntroductionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionView.swift; sourceTree = "<group>"; };
 		C22E61A125CE2FA000F9E8C9 /* WelcomeSubViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeSubViews.swift; sourceTree = "<group>"; };
+		C27106F225CEFBA7002966AA /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		C27106F525CEFC06002966AA /* ChatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRow.swift; sourceTree = "<group>"; };
+		C27106F625CEFC06002966AA /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		C27106FA25CF0624002966AA /* BookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookView.swift; sourceTree = "<group>"; };
+		C27106FF25CF0B0C002966AA /* EdithView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdithView.swift; sourceTree = "<group>"; };
+		C271070225CF0F20002966AA /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
+		C271070525CF1613002966AA /* OrderMedicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMedicine.swift; sourceTree = "<group>"; };
+		C271070825CF1C17002966AA /* QuckDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuckDiagnostics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +124,7 @@
 		C22E618C25CE273300F9E8C9 /* Quick Diagnostics */ = {
 			isa = PBXGroup;
 			children = (
+				C271070825CF1C17002966AA /* QuckDiagnostics.swift */,
 			);
 			path = "Quick Diagnostics";
 			sourceTree = "<group>";
@@ -115,6 +132,9 @@
 		C22E618D25CE273A00F9E8C9 /* Talk to Specialist */ = {
 			isa = PBXGroup;
 			children = (
+				C27106F625CEFC06002966AA /* ChatBubble.swift */,
+				C27106F525CEFC06002966AA /* ChatRow.swift */,
+				C27106F225CEFBA7002966AA /* Chat.swift */,
 			);
 			path = "Talk to Specialist";
 			sourceTree = "<group>";
@@ -122,6 +142,7 @@
 		C22E618E25CE274F00F9E8C9 /* Book an appointment */ = {
 			isa = PBXGroup;
 			children = (
+				C27106FA25CF0624002966AA /* BookView.swift */,
 			);
 			path = "Book an appointment";
 			sourceTree = "<group>";
@@ -136,6 +157,7 @@
 		C22E619025CE276100F9E8C9 /* Order Medicine */ = {
 			isa = PBXGroup;
 			children = (
+				C271070525CF1613002966AA /* OrderMedicine.swift */,
 			);
 			path = "Order Medicine";
 			sourceTree = "<group>";
@@ -143,6 +165,8 @@
 		C22E619125CE276700F9E8C9 /* EDITH */ = {
 			isa = PBXGroup;
 			children = (
+				C27106FF25CF0B0C002966AA /* EdithView.swift */,
+				C271070225CF0F20002966AA /* PulseView.swift */,
 			);
 			path = EDITH;
 			sourceTree = "<group>";
@@ -236,10 +260,18 @@
 				C201507E25CE38AF00A73D3D /* TextShimmer.swift in Sources */,
 				ADFA11E624EAA4FC00FB62D1 /* ContentView.swift in Sources */,
 				C22E619425CE27FA00F9E8C9 /* Profile.swift in Sources */,
+				C271070925CF1C17002966AA /* QuckDiagnostics.swift in Sources */,
 				C22E619B25CE2F8D00F9E8C9 /* IntroductionView.swift in Sources */,
 				C201508625CE3B2500A73D3D /* CleanButtons.swift in Sources */,
+				C27106F325CEFBA7002966AA /* Chat.swift in Sources */,
+				C271070625CF1613002966AA /* OrderMedicine.swift in Sources */,
 				C22E61A225CE2FA000F9E8C9 /* WelcomeSubViews.swift in Sources */,
+				C27106F725CEFC06002966AA /* ChatBubble.swift in Sources */,
+				C27106F825CEFC06002966AA /* ChatRow.swift in Sources */,
+				C27106FB25CF0624002966AA /* BookView.swift in Sources */,
 				ADFA11E424EAA4FC00FB62D1 /* VitalsApp.swift in Sources */,
+				C271070325CF0F20002966AA /* PulseView.swift in Sources */,
+				C271070025CF0B0C002966AA /* EdithView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
