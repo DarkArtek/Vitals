@@ -3,7 +3,7 @@
 //  Vitals
 //
 //  Created by Aayush Pokharel on 2021-02-06.
-//
+// https://github.com/Aayush9029
 
 import SwiftUI
 
