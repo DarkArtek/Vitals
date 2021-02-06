@@ -10,22 +10,22 @@ import LocalAuthentication
 
 struct ContentView: View {
     @State private var isUnlocked = false
-@State private var problem = false
+    @State private var problem = false
     func authenticate() {
         let context = LAContext()
         var error: NSError?
-
+        
         // check whether biometric authentication is possible
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             // it's possible, so go ahead and use it
             let reason = "We need to unlock your data."
-
+            
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
                 // authentication has now completed
                 DispatchQueue.main.async {
                     if success {
                         self.isUnlocked = true
-
+                        
                     } else {
                         problem = true
                         // there was a problem
@@ -40,47 +40,47 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             if isUnlocked{
-            CustomTabView()
-                .navigationTitle("")
-                .navigationBarTitleDisplayMode(.inline)
-                .navigationBarHidden(true)
+                CustomTabView()
+                    .navigationTitle("")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarHidden(true)
             }else{
                 ZStack{
                     Color("top-background")
-                VStack{
                     VStack{
-                        Image(systemName: "bolt.heart")
-                            .font(.system(size: 128))
-                            .foregroundColor(Color.pink.opacity(0.85))
-                            .shadow(color: Color.pink.opacity(0.5), radius: 15)
-                            .padding(.bottom)
-                        
-                        Text("Welcome to Vitals")
-                            .font(.largeTitle)
-                            .fontWeight(.heavy)
-                        Text("Hospital at your fingertips")
-                            .font(.title2)
-                        Divider()
-
-                    }.foregroundColor(Color("Color1"))
-                    Spacer()
-                    VStack{
-                        PulseViewFace()
-                        .shadow(color: .blue, radius: 10 )
-                        .padding(.top, 50)
-                        .onTapGesture {
-                            authenticate()
+                        VStack{
+                            Image(systemName: "bolt.heart")
+                                .font(.system(size: 128))
+                                .foregroundColor(Color.pink.opacity(0.85))
+                                .shadow(color: Color.pink.opacity(0.5), radius: 15)
+                                .padding(.bottom)
+                            
+                            Text("Welcome to Vitals")
+                                .font(.largeTitle)
+                                .fontWeight(.heavy)
+                            Text("Hospital at your fingertips")
+                                .font(.title2)
+                            Divider()
+                            
+                        }.foregroundColor(Color("Color1"))
+                        Spacer()
+                        VStack{
+                            PulseViewFace()
+                                .shadow(color: .blue, radius: 10 )
+                                .padding(.top, 50)
+                                .onTapGesture {
+                                    authenticate()
+                                }
+                            Text("Tap the image to authenticate!").padding(.top)
+                                .foregroundColor(.gray)
                         }
-                        Text("Tap the image to authenticate!").padding(.top)
+                        Spacer()
+                        Text(didyouknows.randomElement()!)
+                            .font(.subheadline)
+                            .padding(.horizontal)
                             .foregroundColor(.gray)
+                            .padding()
                     }
-                    Spacer()
-                    Text(didyouknows.randomElement()!)
-                        .font(.subheadline)
-                        .padding(.horizontal)
-                        .foregroundColor(.gray)
-                        .padding()
-                }
                 }
             }
         }
@@ -231,53 +231,38 @@ struct Home : View {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 20), count: 2),spacing: 20){
                         
                         ForEach(actions){action in
-                            //                            QuickActions(name: "Quick Diagnostics", numCourse: 12,asset: "Diagnostics"),
-                            //                            QuickActions(name: "Talk to specialist", numCourse: 12,asset: "specialist"),
-                            //                            QuickActions(name: "Past Vitals", numCourse: 12,asset: "vitals"),
-                            //                            QuickActions(name: "Book an appointment", numCourse: 12,asset: "appointment"),
-                            //                            QuickActions(name: "Order medicine", numCourse: 12,asset: "medicine"),
-                            //                            QuickActions(name: "Talk to EDITH", numCourse: 12,asset: "edith")
                             
-                            if (action.name == "Talk to specialist"){
+                            switch action.name {
+                            case "Talk to specialist":
                                 NavigationLink(destination: ChatView()) {
-                                    
                                     ActivityCardView(action: action)
                                 }
-                            }
-                            else if action.name == "Book an appointment"{
+                            case "Book an appointment":
                                 NavigationLink(destination: BookView()) {
                                     
                                     ActivityCardView(action: action)
                                 }
-                                
-                                
-                            }else if action.name == "Order medicine"{
+                            case "Order medicine":
                                 NavigationLink(destination: OrderMedicine()) {
                                     
                                     ActivityCardView(action: action)
                                 }
-                            }
-                            else if action.name == "Talk to EDITH"{
+                            case "Talk to EDITH":
                                 NavigationLink(destination: EdithView()) {
                                     
                                     ActivityCardView(action: action)
                                 }
-                            }
-                            
-                            
-                            else if action.name == "Quick Diagnostics"{
+                            case  "Quick Diagnostics":
                                 NavigationLink(destination: QuckDiagnostics()) {
-                                    
                                     ActivityCardView(action: action)
                                 }
                                 
-                                
-                            }else{
-                                NavigationLink(destination: DetailView(action: action)) {
-                                    
+                            default:
+                                NavigationLink(destination: VitalsView()) {
                                     ActivityCardView(action: action)
                                 }
                             }
+                            
                         }
                     }
                     .padding(.top)
@@ -345,12 +330,27 @@ struct Email : View {
                 Spacer(minLength: 0)
             }
             .padding()
-            Spacer(minLength: 0)
-
             
             Text("No New messages")
+                .padding(.top, 50)
             Spacer(minLength: 0)
+            HStack{
+                Text("Download your reports")
+                    .foregroundColor(Color("Color1"))
+                    .font(.title)
+                    .fontWeight(.heavy)
+                
+                Spacer(minLength: 0)
+            }
+            .padding()
+            Divider()
 
+            Reports()
+            Divider()
+            Reports(name: "Hematalogy Report.pdf")
+            
+            Spacer(minLength: 0)
+            
         }
     }
 }
@@ -370,12 +370,13 @@ struct QuickActions : Identifiable {
 // both image and color name is same so i used common word asset...
 
 var actions = [
-    
     QuickActions(name: "Quick Diagnostics", numCourse: 12,asset: "Diagnostics"),
     QuickActions(name: "Talk to specialist", numCourse: 12,asset: "specialist"),
     QuickActions(name: "Book an appointment", numCourse: 12,asset: "appointment"),
     QuickActions(name: "Order medicine", numCourse: 12,asset: "medicine"),
-    QuickActions(name: "Talk to EDITH", numCourse: 12,asset: "edith")
+    QuickActions(name: "Talk to EDITH", numCourse: 12,asset: "edith"),
+    QuickActions(name: "Past Vitals", numCourse: 12,asset: "vitals")
+    
 ]
 
 struct DetailView : View {
@@ -396,5 +397,31 @@ struct DetailView : View {
             CardButton(image: "questionmark.circle", color: .green)
             
         }))
+    }
+}
+
+struct Reports: View {
+    var name = "Vitalreports.pdf"
+    var body: some View {
+        VStack{
+            HStack{
+                Image(systemName: "newspaper")
+                Text(name)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                Spacer()
+                Image(systemName: "arrow.down")
+                    .foregroundColor(.blue)
+                    .padding(5)
+                    .background(Color.blue.opacity(0.25))
+                    .cornerRadius(5)
+            } .foregroundColor(.white)
+            
+            .padding(10)
+            .background(Color.green.opacity(0.5))
+            .cornerRadius(15)
+            .shadow(color: .green, radius: 10)
+        }
+        .padding()
     }
 }

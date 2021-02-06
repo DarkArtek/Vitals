@@ -11,6 +11,10 @@ struct OrderMedicine: View {
     var medicines = ["Synthroid", "Methadose", "Apo-Atorvastatin", "Jamp-Vitamin D", "Sandoz-Amlodopine", "Apo-Rosuvastatin"]
     @State var ordered = [""]
     
+    @State var ordersString = ""
+    
+    @State var showingAlert: Bool = false
+    
     var body: some View {
         
         VStack {
@@ -45,7 +49,23 @@ struct OrderMedicine: View {
               .background(Color.green .opacity((ordered.count > 1) ? 0.85 : 0.25))
               .cornerRadius(15)
               .shadow(color: Color.green, radius: 5)
+              .onTapGesture {
+                showingAlert.toggle()
+                ordersString = ""
+                for order in ordered{
+                    ordersString  += order
+                    ordersString += " | "
+                }
+              }
             
+    }
+
+    .alert(isPresented: $showingAlert) {
+        if ordered.count > 1{
+            return Alert(title: Text("Purchase Successful"), message: Text(ordersString), dismissButton: .default(Text("Got it!")))
+        }else{
+            return Alert(title: Text("Select At least 1 item"), message: Text("You must add at least 1 item"), dismissButton: .default(Text("Got it!")))
+        }
     }
 }
 

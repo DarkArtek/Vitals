@@ -13,7 +13,7 @@ struct ChatRow: View {
 //        Would probably be better if we had a proper view model, but this is only for demo purposes
         HStack(spacing: 15){
             
-            if chat != "Mind telling me what you ate before bed?"{
+            if (chat != "Mind telling me what you ate before bed?" && chat != "Interesting... I wonder what caused the stomach ache!"){
             
             // NickName View...
             Spacer()

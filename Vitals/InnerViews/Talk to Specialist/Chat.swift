@@ -49,6 +49,10 @@ struct ChatView: View {
                     
                     Button(action: {
                         self.messages.append(message)
+                        message = ""
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                            self.messages.append("Interesting... I wonder what caused the stomach ache!")
+                        }
                     }, label: {
                         
                         Image(systemName: "paperplane.fill")

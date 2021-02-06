@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,8 @@
 		C271070325CF0F20002966AA /* PulseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070225CF0F20002966AA /* PulseView.swift */; };
 		C271070625CF1613002966AA /* OrderMedicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070525CF1613002966AA /* OrderMedicine.swift */; };
 		C271070925CF1C17002966AA /* QuckDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271070825CF1C17002966AA /* QuckDiagnostics.swift */; };
+		C271071625CF3B10002966AA /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = C271071525CF3B10002966AA /* SwiftUICharts */; };
+		C271071925CF3B19002966AA /* VitalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C271071825CF3B19002966AA /* VitalsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,7 @@
 		C271070225CF0F20002966AA /* PulseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseView.swift; sourceTree = "<group>"; };
 		C271070525CF1613002966AA /* OrderMedicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMedicine.swift; sourceTree = "<group>"; };
 		C271070825CF1C17002966AA /* QuckDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuckDiagnostics.swift; sourceTree = "<group>"; };
+		C271071825CF3B19002966AA /* VitalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitalsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C271071625CF3B10002966AA /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +154,7 @@
 		C22E618F25CE275800F9E8C9 /* Past Vitals */ = {
 			isa = PBXGroup;
 			children = (
+				C271071825CF3B19002966AA /* VitalsView.swift */,
 			);
 			path = "Past Vitals";
 			sourceTree = "<group>";
@@ -204,6 +209,9 @@
 			dependencies = (
 			);
 			name = Vitals;
+			packageProductDependencies = (
+				C271071525CF3B10002966AA /* SwiftUICharts */,
+			);
 			productName = Courses;
 			productReference = ADFA11E024EAA4FC00FB62D1 /* Vitals.app */;
 			productType = "com.apple.product-type.application";
@@ -231,6 +239,9 @@
 				Base,
 			);
 			mainGroup = ADFA11D724EAA4FC00FB62D1;
+			packageReferences = (
+				C271071425CF3B10002966AA /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = ADFA11E124EAA4FC00FB62D1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,6 +277,7 @@
 				C27106F325CEFBA7002966AA /* Chat.swift in Sources */,
 				C271070625CF1613002966AA /* OrderMedicine.swift in Sources */,
 				C22E61A225CE2FA000F9E8C9 /* WelcomeSubViews.swift in Sources */,
+				C271071925CF3B19002966AA /* VitalsView.swift in Sources */,
 				C27106F725CEFC06002966AA /* ChatBubble.swift in Sources */,
 				C27106F825CEFC06002966AA /* ChatRow.swift in Sources */,
 				C27106FB25CF0624002966AA /* BookView.swift in Sources */,
@@ -460,6 +472,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C271071425CF3B10002966AA /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C271071525CF3B10002966AA /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C271071425CF3B10002966AA /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADFA11D824EAA4FC00FB62D1 /* Project object */;
 }
