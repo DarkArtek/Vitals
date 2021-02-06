@@ -1,2 +1,2 @@
 # Vitals
-Hackathon Project, Patient Health Care Dashboard
+Opensource. Patient Health Care Dashboard
